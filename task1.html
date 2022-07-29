@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2171/2171991.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт для любителей кошек</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #formContainer {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            justify-content: center
+        }
+    </style>
+</head>
+
+<body>
+    <div id="formContainer">
+        <h2>Пройдите наш опросник!</h2>
+        <form>
+            <div>
+                <label for="name">Кличка питомца</label>
+                <input type="text" id="name" placeholder="Кличка" required>
+            </div>
+            <div>
+                <label for="name">Имя владельца</label>
+                <input type="text" id="ownername" placeholder="Имя" required>
+            </div>
+            <div>
+                <label for="phone">Номер телефона владельца</label>
+                <input type="tel" id="phone" maxlength="20" pattern="\+?[0-9\s\-\(\)]+\" required>
+            </div>
+            <p>Чем питается ваш питомец ?</p>
+            <div>
+                <select required>
+                    <option value="">Не выбрано</option>
+                    <option value="1">Сухой корм</option>
+                    <option value="2">Влажный корм</option>
+                    <option value="3">Натуральный корм</option>
+                </select>
+            </div>
+            <div>
+                <label for="sex">Укажите пол вашего питомца</label><br>Самка <input type="radio" required
+                    name="sex"><br>Самец<input type="radio" name="sex">
+            </div>
+            <p>Комментарий владельца :</p>
+            <div>
+                <textarea rows="12"></textarea>
+            </div>
+            <p>Приложите фото питомца :</p>
+            <div>
+                <input type="file">
+            </div>
+            <h3> </h3>
+            <div><button type="submit">Сохранить внесённые данные</button></div>
+        </form>
+    </div>
+
+</body>
+
+</html>
