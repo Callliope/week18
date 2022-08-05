@@ -91,28 +91,7 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
     <script>
-        function Check() {
-            let email = document.getElementById("inputEmail4");
-            let password1 = document.getElementById("inputPassword1");
-            let password2 = document.getElementById("inputPassword2");
-            let telephone = document.getElementById("phone");
-            let error = document.getElementById("errormessage");
-
-
-            document.getElementById("errormessage").innerHTML = "";
-            if (email.value == "") {
-                document.getElementById("errormessage").innerHTML += "Введите  Email</br>";
-            } else if (password1.value == "" || password2.value == "") {
-                document.getElementById("errormessage").innerHTML += "Введите пароль</br>";
-            } else if (password1.value != password2.value) {
-                document.getElementById("errormessage").innerHTML += "Пароли не совпадают</br>";
-            } else if (telephone.value.length < 11) {
-                document.getElementById("errormessage").innerHTML += "Номер должен содержать строго 11 знаков</br>";
-
-            } else {
-                alert("Регистрация прошла успешно");
-            }
-        }
+        var checkedinputs = 0;
 
         function Checkmail() {
             let email = document.getElementById("inputEmail4").value;
@@ -121,6 +100,7 @@
             error.innerHTML = "";
             if ((email != "") && (email.match(mailFormat))) {
                 return true;
+                checkedinputs = +1;
             } else {
                 error.innerHTML = "Неверно введен E-mail";
             }
@@ -132,6 +112,7 @@
             error.innerHTML = "";
             if ((pass.value != "") && (pass.value.length >= 8)) {
                 return true;
+                checkedinputs = +1;
             } else {
                 error.innerHTML = "Пароль должен быть не менее 8 знаков";
             }
@@ -144,6 +125,7 @@
             error.innerHTML = "";
             if (pass1 == pass2) {
                 return true;
+                checkedinputs = +1;
             } else {
                 error.innerHTML = "Пароли не совпадают";
             }
@@ -156,11 +138,39 @@
             error.innerHTML = "";
             if ((phone != "") && (phone.match(phoneFormat))) {
                 return true;
+                checkedinputs = +1
             } else {
                 error.innerHTML = "Неверно введен номер";
             }
         }
 
+        function Check() {
+            // let email = document.getElementById("inputEmail4");
+            // let password1 = document.getElementById("inputPassword1");
+            // let password2 = document.getElementById("inputPassword2");
+            // let telephone = document.getElementById("phone");
+            // let error = document.getElementById("errormessage");
+
+
+            // document.getElementById("errormessage").innerHTML = "";
+            // if (email.value == "") {
+            //     document.getElementById("errormessage").innerHTML += "Введите  Email</br>";
+            // } else if (password1.value == "" || password2.value == "") {
+            //     document.getElementById("errormessage").innerHTML += "Введите пароль</br>";
+            // } else if (password1.value != password2.value) {
+            //     document.getElementById("errormessage").innerHTML += "Пароли не совпадают</br>";
+            // } else if (telephone.value.length < 11) {
+            //     document.getElementById("errormessage").innerHTML += "Номер должен содержать строго 11 знаков</br>";
+
+            // } else {
+            if (checkedinputs == 4) {
+                alert("Регистрация прошла успешно");
+
+            } else {
+                document.getElementById("errormessage").innerHTML = "";
+                document.getElementById("errormessage").innerHTML += "Введите данные</br>";
+            }
+        }
 
         function show() {
             if (document.getElementById("theme").value == "mint")
