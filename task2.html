@@ -24,16 +24,21 @@
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Введите Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input onkeyup="Checkmail()" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <span id="lblError" style="color: red"></span>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputPassword1">Введите пароль</label>
-            <input type="password" class="form-control" id="inputPassword1" placeholder="Пароль">
+            <input onkeyup="Checkpassword()" type="password" class="form-control" id="inputPassword1"
+                placeholder="Пароль">
+            <span id="passwordError1" style="color: red"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword2">Повторите пароль</label>
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Пароль">
+            <input onkeyup="Checksecpassword()" type="password" class="form-control" id="inputPassword2"
+                placeholder="Пароль">
+            <span id="passwordError2" style="color: red"></span>
         </div>
 
         <div class="form-group" id="radiobuttonset">
@@ -90,9 +95,11 @@
             let password2 = document.getElementById("inputPassword2");
             let telephone = document.getElementById("phone");
             let error = document.getElementById("errormessage");
+
+
             document.getElementById("errormessage").innerHTML = "";
             if (email.value == "") {
-                document.getElementById("errormessage").innerHTML += "Введите Email</br>";
+                document.getElementById("errormessage").innerHTML += "Введите  Email</br>";
             } else if (password1.value == "" || password2.value == "") {
                 document.getElementById("errormessage").innerHTML += "Введите пароль</br>";
             } else if (password1.value != password2.value) {
@@ -104,6 +111,42 @@
                 alert("Регистрация прошла успешно");
             }
         }
+
+        function Checkmail() {
+            let email = document.getElementById("inputEmail4").value;
+            let error = document.getElementById("lblError");
+            var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            error.innerHTML = "";
+            if ((email != "") && (email.match(mailFormat))) {
+                return true;
+            } else {
+                error.innerHTML = "Неверно введен E-mail";
+            }
+        }
+
+        function Checkpassword() {
+            let pass = document.getElementById("inputPassword1");
+            let error = document.getElementById("passwordError1");
+            error.innerHTML = "";
+            if ((pass.value != "") && (pass.value.length >= 8)) {
+                return true;
+            } else {
+                error.innerHTML = "Пароль должен быть не менее 8 знаков";
+            }
+        }
+
+        function Checksecpassword() {
+            let pass1 = document.getElementById("inputPassword1").value;
+            let pass2 = document.getElementById("inputPassword2").value;
+            let error = document.getElementById("passwordError2");
+            error.innerHTML = "";
+            if (pass1 == pass2) {
+                return true;
+            } else {
+                error.innerHTML = "Пароли не совпадают";
+            }
+        }
+
 
         function show() {
             if (document.getElementById("theme").value == "mint")
